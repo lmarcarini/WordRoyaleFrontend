@@ -1,0 +1,19 @@
+.MiniPlayerContainer{
+  display: flex;
+
+}
+
+.playing {
+  color:antiquewhite;
+}
+
+.gameover {
+  color: red;
+}
+
+.playerMiniDisplay{
+  
+  margin: 5px;
+  width: 100px;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+.keyboard-key{
+    width: 25px;
+    height: 25px;
+    background-color: gray;
+    border-radius: 10%;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.O{
+    background-color: #00b63d;
+}
+
+.X{
+    background-color: #b6a400;
+}
+
+.N{
+    background-color: black;
+}

@@ -1,0 +1,44 @@
+.square{
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background-color: black;
+    border-color: antiquewhite;
+    border-style: solid;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.answerRow{
+    display: flex;
+    flex-direction: row;    
+}
+
+.O {
+    background-color: #00b63d;
+    animation: rotateAnimation 0.4s linear;
+    transition: background-color;
+    transition-delay: 0.2s;
+  }
+  
+  .X {
+    background-color: #b6a400;
+    animation: rotateAnimation 0.4s linear;
+    transition: background-color;
+    transition-delay: 0.2s;
+  }
+  
+  .N {
+    background-color: #404040;
+    animation: rotateAnimation 0.4s linear;
+    transition: background-color;
+    transition-delay: 0.2s;
+  }
+
+  @keyframes rotateAnimation {
+    from {transform: rotateX(0deg);}
+    to {transform: rotateX(180deg);}
+  }
