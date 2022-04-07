@@ -12,7 +12,7 @@ import WinnerScreen from "../components/WinnerScreen";
 
 const apiUrl =
   process.env.NODE_ENV === "production"
-    ? "https://word-royale-backend.herokuapp.com/"
+    ? "ws://word-royale-backend.herokuapp.com/"
     : "ws://localhost:8080";
 
 const socket = io(apiUrl);
