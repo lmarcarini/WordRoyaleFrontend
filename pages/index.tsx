@@ -12,8 +12,8 @@ import WinnerScreen from "../components/WinnerScreen";
 
 const apiUrl =
   process.env.NODE_ENV === "production"
-    ? "https://word-royale-backend.herokuapp.com/"
-    : "https://localhost:80";
+    ? "wss://word-royale-backend.herokuapp.com/"
+    : "ws://localhost:80";
 
 const socket = io(apiUrl);
 
