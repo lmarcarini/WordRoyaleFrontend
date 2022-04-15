@@ -13,7 +13,7 @@ import WinnerScreen from "../components/WinnerScreen";
 const apiUrl =
   process.env.NODE_ENV === "production"
     ? "wss://word-royale-backend.herokuapp.com/"
-    : "ws://localhost:80";
+    : "ws://localhost:8080";
 
 const socket = io(apiUrl);
 
@@ -74,7 +74,6 @@ const Home = ({ allowedGuesses }: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("teste");
     const form = document.querySelector("form") as HTMLFormElement;
     const formData = new FormData(form);
     const name = formData.get("name");

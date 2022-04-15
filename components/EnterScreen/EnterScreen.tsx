@@ -1,4 +1,5 @@
 import Form from "../Form";
+import VisualKeyboard from "../VisualKeyboard";
 import styles from "./EnterScreen.module.css";
 
 type Props = {
@@ -6,10 +7,39 @@ type Props = {
 };
 
 const EnterScreen = ({ handleSubmit }: Props) => {
+  const characters: Characters = {
+    a: "?",
+    b: "?",
+    c: "?",
+    d: "?",
+    e: "?",
+    f: "?",
+    g: "?",
+    h: "?",
+    i: "?",
+    j: "?",
+    k: "?",
+    l: "?",
+    m: "?",
+    n: "?",
+    o: "?",
+    p: "?",
+    q: "?",
+    r: "?",
+    s: "?",
+    t: "?",
+    u: "?",
+    v: "?",
+    w: "?",
+    x: "?",
+    y: "?",
+    z: "?",
+  };
   return (
     <>
       <h1 className={styles.title}>Word Royale</h1>
       <Form submitHandler={handleSubmit} />
+      <VisualKeyboard characters={characters} />
     </>
   );
 };

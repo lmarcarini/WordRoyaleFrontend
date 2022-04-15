@@ -13,7 +13,6 @@ const useGameState = (socket: Socket) => {
         console.log("Joining game");
         setRoom(room);
         setGameState("waiting");
-        console.log(answer);
         setAnswer(answer);
       }
     };

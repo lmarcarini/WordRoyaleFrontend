@@ -7,8 +7,12 @@ type Props = {
   state: string;
 };
 
-const Key = ({ className, value, state }: Props) => {
-  return <div className={styles[className] + " " + styles[state]}>{value}</div>;
+const Key = ({ className, value, state, onClick }: Props) => {
+  return (
+    <div className={styles[className] + " " + styles[state]} onClick={onClick}>
+      {value}
+    </div>
+  );
 };
 
 export default Key;
