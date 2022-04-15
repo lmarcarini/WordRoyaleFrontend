@@ -38,9 +38,6 @@ export default function Form({ submitHandler }: FormProps) {
         Type Your Name
       </label>
       <br />
-      <button type="submit" className={styles.joinButton} ref={buttonRef}>
-        Join Game
-      </button>
     </form>
   );
 }
