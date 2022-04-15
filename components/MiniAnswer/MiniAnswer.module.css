@@ -1,3 +1,9 @@
+.miniContainer{
+  height: 142px;
+  background-color: #000000;
+  border-radius: 5%;
+}
+
 .square {
   width: 10px;
   height: 10px;

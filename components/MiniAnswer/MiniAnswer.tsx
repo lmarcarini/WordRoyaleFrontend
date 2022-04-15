@@ -11,7 +11,7 @@ export default function MiniAnswer({ guesses }: MiniAnswerProps) {
   }, [guesses]);
 
   return (
-    <>
+    <div className={styles.miniContainer}>
       {guesses.map((guess, index) => (
         <div key={index} className="answerLine">
           {guess.split("").map((c, i) => (
@@ -24,6 +24,6 @@ export default function MiniAnswer({ guesses }: MiniAnswerProps) {
           <div className={styles.typing + " " + styles.square}></div>
         </div>
       )}
-    </>
+    </div>
   );
 }

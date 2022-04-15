@@ -34,7 +34,7 @@ const InputGrid = ({ handleGuess, results }: Props) => {
   }, [results]);
 
   return (
-    <div>
+    <div className={styles.gridContainer}>
       {grid.map((row, rowIndex) => (
         <div className={styles.answerRow} key={rowIndex}>
           {new Array(5).fill(" ").map((col: any, colIndex: any) => (

@@ -1,8 +1,10 @@
 .keyboard-row{
     display: flex;
     flex-direction: row;
+    width: 95vw;
+    max-width: 500px;
 }
 
 .keyboardRow2{
-    margin-left: 14px;
+    margin-left: 0.75rem;
 }

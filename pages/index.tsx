@@ -15,6 +15,8 @@ const apiUrl =
     ? "wss://word-royale-backend.herokuapp.com/"
     : "ws://localhost:8080";
 
+// const apiUrl = "ws://localhost:8080";
+
 const socket = io(apiUrl);
 
 type Props = {
