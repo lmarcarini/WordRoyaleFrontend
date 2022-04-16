@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
 import { Socket } from "socket.io-client";
+import useStore from "../store/useStore";
 
 const useGameState = (socket: Socket) => {
-  const [gameState, setGameState] = useState<string>("joining");
   const [players, setPlayers] = useState<Player[]>([]);
   const [room, setRoom] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
 
+  const currentScreen = useStore((state) => state.currentScreen);
+
   useEffect(() => {
     const onJoin = (room: string, answer: string) => {
-      if (gameState === "joining") {
+      if (currentScreen === "joining") {
         console.log("Joining game");
         setRoom(room);
-        setGameState("waiting");
+        useStore.setState({ currentScreen: "waiting" });
         setAnswer(answer);
+        useStore.setState({ answer: answer });
       }
     };
 
     const onStart = () => {
-      if (gameState === "waiting") {
+      if (currentScreen === "waiting") {
         console.log("Starting game");
-        setGameState("playing");
+        useStore.setState({ currentScreen: "playing" });
       }
     };
 
@@ -39,7 +42,7 @@ const useGameState = (socket: Socket) => {
         ) {
           newPlayers[player].status = "gameover";
           if (socket.id === playerId) {
-            setGameState("gameover");
+            useStore.setState({ currentScreen: "gameover" });
           }
         }
         setPlayers([...newPlayers]);
@@ -61,9 +64,9 @@ const useGameState = (socket: Socket) => {
     const onWinner = (playerId: string) => {
       console.log(`${playerId} won`);
       //change status of player to gameover
-
-      setGameState(socket.id === playerId ? "winner" : "gameover");
-
+      useStore.setState({
+        currentScreen: socket.id === playerId ? "winner" : "gameover",
+      });
       const player = players.findIndex((p) => p.id === playerId);
       if (player !== -1) {
         let newPlayers = players;
@@ -75,7 +78,7 @@ const useGameState = (socket: Socket) => {
 
     const onDisconnect = () => {
       console.log("Disconnected");
-      setGameState("joining");
+      useStore.setState({ currentScreen: "joining" });
       setRoom("");
       setPlayers([]);
       setAnswer("");
@@ -97,9 +100,9 @@ const useGameState = (socket: Socket) => {
       socket.off("winner", onWinner);
       socket.off("disconnect", onDisconnect);
     };
-  }, [gameState]);
+  }, [currentScreen]);
 
-  return { answer, gameState, players, room, setGameState };
+  return { answer, players, room };
 };
 
 export default useGameState;

@@ -15,6 +15,7 @@ export default function Form({ submitHandler }: FormProps) {
       //enable input
       inputRef.current!.disabled = false;
       buttonRef.current?.click();
+      inputRef.current!.disabled = true;
       return true;
     }
     return false;
@@ -34,6 +35,9 @@ export default function Form({ submitHandler }: FormProps) {
           disabled
           ref={inputRef}
         />
+        <button className={styles.submitButton} ref={buttonRef} type="submit">
+          o
+        </button>
         <br />
         Type Your Name
       </label>

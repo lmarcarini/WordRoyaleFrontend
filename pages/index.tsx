@@ -9,6 +9,7 @@ import GameOverScreen from "../components/GameOverScreen";
 import PlayingScreen from "../components/PlayingScreen";
 import { useEffect, useState } from "react";
 import WinnerScreen from "../components/WinnerScreen";
+import useStore from "../store/useStore";
 
 const apiUrl =
   process.env.NODE_ENV === "production"
@@ -53,14 +54,19 @@ const initialCharacters: Characters = {
 };
 
 const Home = ({ allowedGuesses }: Props) => {
-  const { answer, gameState, players, room, setGameState } =
-    useGameState(socket);
+  const { answer, players, room } = useGameState(socket);
 
   const [characters, setCharacters] = useState<Characters>(initialCharacters);
 
+  // useEffect(() => {
+  //   if (gameState === "joining") setCharacters(initialCharacters);
+  // }, [gameState]);
+
+  const currentScreen = useStore((state) => state.currentScreen);
+
   useEffect(() => {
-    if (gameState === "joining") setCharacters(initialCharacters);
-  }, [gameState]);
+    if (currentScreen === "joining") setCharacters(initialCharacters);
+  }, [currentScreen]);
 
   const handleGuess = (word: string): boolean => {
     if (isWordAllowed(word, allowedGuesses)) {
@@ -87,7 +93,8 @@ const Home = ({ allowedGuesses }: Props) => {
   //handle refresh client
   const handleRestart = () => {
     socket.emit("restart");
-    setGameState("joining");
+    // setGameState("joining");
+    useStore.setState({ currentScreen: "joining" });
   };
 
   return (
@@ -99,9 +106,11 @@ const Home = ({ allowedGuesses }: Props) => {
       </Head>
 
       <main className={styles.main}>
-        {gameState === "joining" && <EnterScreen handleSubmit={handleSubmit} />}
-        {gameState === "waiting" && <WaitingScreen players={players} />}
-        {gameState === "playing" && (
+        {currentScreen === "joining" && (
+          <EnterScreen handleSubmit={handleSubmit} />
+        )}
+        {currentScreen === "waiting" && <WaitingScreen players={players} />}
+        {currentScreen === "playing" && (
           <PlayingScreen
             players={players}
             handleGuess={handleGuess}
@@ -109,10 +118,10 @@ const Home = ({ allowedGuesses }: Props) => {
             characters={characters}
           />
         )}
-        {gameState === "gameover" && (
+        {currentScreen === "gameover" && (
           <GameOverScreen handleRestart={handleRestart} />
         )}
-        {gameState === "winner" && (
+        {currentScreen === "winner" && (
           <WinnerScreen handleRestart={handleRestart} />
         )}
       </main>
