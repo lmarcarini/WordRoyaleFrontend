@@ -1,12 +1,12 @@
 import styles from "./GameOverScreen.module.css";
-import useStore from "../../store/useStore";
+import useGameStore from "../../../store/gameStore";
 
 type Props = {
-  handleRestart: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleRestart: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const GameOverScreen = ({ handleRestart }: Props) => {
-  const answer = useStore((state) => state.answer);
+const GameOverScreen = ({ handleRestart }: Props): JSX.Element => {
+  const answer = useGameStore((state) => state.answer);
 
   return (
     <>

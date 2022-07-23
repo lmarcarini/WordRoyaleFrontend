@@ -40,7 +40,7 @@ const useController = (
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [guess]);
+  }, [guess, makeGuess, state]);
 
   return { guess, resetGuess };
 };

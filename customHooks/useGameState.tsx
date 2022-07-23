@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react";
-import { Socket } from "socket.io-client";
-import useStore from "../store/useStore";
+import { useEffect } from "react";
+import useStore from "../store/gameStore";
+import { Player } from "@/models/Player.model";
 
-const useGameState = (socket: Socket) => {
-  const [players, setPlayers] = useState<Player[]>([]);
-  const [room, setRoom] = useState<string>("");
-  const [answer, setAnswer] = useState<string>("");
-
+const useGameState = () => {
+  const players = useStore((state) => state.players);
   const currentScreen = useStore((state) => state.currentScreen);
+  const socket = useStore((state) => state.socket);
 
   useEffect(() => {
     const onJoin = (room: string, answer: string) => {
       if (currentScreen === "joining") {
         console.log("Joining game");
-        setRoom(room);
-        useStore.setState({ currentScreen: "waiting" });
-        setAnswer(answer);
-        useStore.setState({ answer: answer });
+        useStore.setState({
+          room: room,
+          currentScreen: "waiting",
+          answer: answer,
+        });
       }
     };
 
@@ -28,7 +27,7 @@ const useGameState = (socket: Socket) => {
     };
 
     const getPlayers = (players: Player[]) => {
-      setPlayers(players);
+      useStore.setState({ players: players });
     };
 
     const getGuess = (playerId: string, guess: string) => {
@@ -45,7 +44,7 @@ const useGameState = (socket: Socket) => {
             useStore.setState({ currentScreen: "gameover" });
           }
         }
-        setPlayers([...newPlayers]);
+        useStore.setState({ players: [...newPlayers] });
       }
     };
 
@@ -57,7 +56,7 @@ const useGameState = (socket: Socket) => {
         let newPlayers = players;
         newPlayers[player].status = "gameover";
         console.log(newPlayers);
-        setPlayers([...newPlayers]);
+        useStore.setState({ players: [...newPlayers] });
       }
     };
 
@@ -72,16 +71,18 @@ const useGameState = (socket: Socket) => {
         let newPlayers = players;
         newPlayers[player].status = "winner";
         console.log(newPlayers);
-        setPlayers([...newPlayers]);
+        useStore.setState({ players: [...newPlayers] });
       }
     };
 
     const onDisconnect = () => {
       console.log("Disconnected");
-      useStore.setState({ currentScreen: "joining" });
-      setRoom("");
-      setPlayers([]);
-      setAnswer("");
+      useStore.setState({
+        currentScreen: "joining",
+        room: "",
+        players: [],
+        answer: "",
+      });
     };
 
     socket.on("join", onJoin);
@@ -100,9 +101,7 @@ const useGameState = (socket: Socket) => {
       socket.off("winner", onWinner);
       socket.off("disconnect", onDisconnect);
     };
-  }, [currentScreen]);
-
-  return { answer, players, room };
+  }, [currentScreen, players, socket]);
 };
 
 export default useGameState;

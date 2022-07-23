@@ -1,5 +1,5 @@
-import Form from "../Form";
-import VisualKeyboard from "../VisualKeyboard";
+import Form from "../../ui/Form";
+import VisualKeyboard from "../../ui/VisualKeyboard";
 import styles from "./EnterScreen.module.css";
 
 type Props = {

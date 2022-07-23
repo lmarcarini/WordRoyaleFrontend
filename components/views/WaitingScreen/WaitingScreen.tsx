@@ -1,10 +1,9 @@
 import styles from "./WaitingScreen.module.css";
+import useGameStore from "@/store/gameStore";
 
-type Props = {
-  players: Player[];
-};
+const WaitingScreen = (): JSX.Element => {
+  const players = useGameStore((state) => state.players);
 
-const WaitingScreen = ({ players }: Props) => {
   return (
     <>
       <h1>Waiting for other players</h1>

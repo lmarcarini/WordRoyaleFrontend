@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useController from "../../customHooks/useController";
+import useController from "../../../customHooks/useController";
 import styles from "./InputGrid.module.css";
 
 type Props = {
@@ -16,22 +16,17 @@ const InputGrid = ({ handleGuess, results }: Props) => {
     }
     return false;
   };
+  const { guess } = useController(makeGuess);
 
   const [guesses, setGuesses] = useState<string[]>([""].fill("", 0, 6));
 
   const grid = new Array(6).fill(new Array(5).fill(""));
 
-  const { guess } = useController(makeGuess);
-
   useEffect(() => {
     let tempGuesses: string[] = [...guesses];
     tempGuesses[currentGuess] = guess;
     setGuesses(tempGuesses);
-  }, [guess]);
-
-  useEffect(() => {
-    console.log(results);
-  }, [results]);
+  }, [guess, currentGuess, guesses]);
 
   return (
     <div className={styles.gridContainer}>
