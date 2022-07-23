@@ -1,5 +1,5 @@
 import styles from "./GameOverScreen.module.css";
-import useGameStore from "../../../store/gameStore";
+import useGameStore from "@/store/gameStore";
 
 type Props = {
   handleRestart: React.MouseEventHandler<HTMLButtonElement>;
