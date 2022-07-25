@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 
-type Props = {
-  handleGuess: (guess: string) => void;
-  state?: String;
-};
-
 const useController = (
   makeGuess: (guess: string) => Boolean,
   state?: String
@@ -31,9 +26,9 @@ const useController = (
         return;
       }
       if (e.key === "Backspace" && guess.length > 0)
-        setGuess(guess.slice(0, -1));
+        setGuess((curGuess) => curGuess.slice(0, -1));
       if (new RegExp(/^[a-z]$/i).test(e.key) && guess.length < MAX_CHARACTERS)
-        setGuess(guess + e.key);
+        setGuess((curGuess) => curGuess + e.key);
     };
 
     window.addEventListener("keydown", handleKeyDown);

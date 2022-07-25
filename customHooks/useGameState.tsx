@@ -30,8 +30,9 @@ const useGameState = () => {
       useStore.setState({ players: players });
     };
 
-    const getGuess = (playerId: string, guess: string) => {
+    const getGuess = (playerId: string, guess: string[]) => {
       const player = players.findIndex((p) => p.id === playerId);
+      console.log("guess", guess);
       if (player !== -1) {
         let newPlayers = players;
         newPlayers[player].guesses = [...newPlayers[player].guesses, guess];

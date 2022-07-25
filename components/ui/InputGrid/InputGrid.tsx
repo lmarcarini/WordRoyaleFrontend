@@ -4,7 +4,7 @@ import styles from "./InputGrid.module.css";
 
 type Props = {
   handleGuess: (word: string) => boolean;
-  results: string[] | undefined;
+  results: string[][] | undefined;
 };
 
 const InputGrid = ({ handleGuess, results }: Props) => {

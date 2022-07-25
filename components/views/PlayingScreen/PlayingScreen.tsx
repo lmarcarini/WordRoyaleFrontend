@@ -16,6 +16,7 @@ const PlayingScreen = () => {
   const answer = useGameStore((state) => state.answer);
 
   const handleGuess = (word: string): boolean => {
+    console.log(word);
     if (isWordAllowed(word)) {
       let guessResult = getGuessResult(word, answer);
       let updatedCharacters = updateCharacters(
@@ -26,6 +27,7 @@ const PlayingScreen = () => {
       useCharacterStore.setState({
         characters: { ...characters, ...updatedCharacters },
       });
+      console.log(guessResult);
       socket.emit("guess", guessResult, room);
       return true;
     }

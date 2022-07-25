@@ -26,7 +26,7 @@ export const getGuessResult = (
   }
   for (let i = 0; i < word.length; i++) {
     if (answer.includes(word[i])) {
-      result.splice(i, 0, "X");
+      result[i] = "X";
       answer = answer.replace(word[i], "");
     }
   }

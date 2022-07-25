@@ -1,8 +1,19 @@
 import Key from "../Key";
 import styles from "./VisualKeyboard.module.css";
+import { CharactersType, CharacterType } from "@/models/Character.model";
 
 type Props = {
-  characters: Characters;
+  characters: CharactersType;
+};
+
+const createKeyObject = (key: string, display: string | undefined) => {
+  return {
+    key,
+    value: display,
+    className: "keyboard-key",
+    onClick: () =>
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: key })),
+  };
 };
 
 const VisualKeyboard = ({ characters }: Props) => {
@@ -12,7 +23,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "q",
       className: "keyboard-key",
       onClick: () => {
-        console.log("q");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "q" }));
       },
     },
@@ -21,7 +31,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "w",
       className: "keyboard-key",
       onClick: () => {
-        console.log("w");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "w" }));
       },
     },
@@ -30,7 +39,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "e",
       className: "keyboard-key",
       onClick: () => {
-        console.log("e");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "e" }));
       },
     },
@@ -39,7 +47,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "r",
       className: "keyboard-key",
       onClick: () => {
-        console.log("r");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "r" }));
       },
     },
@@ -48,7 +55,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "t",
       className: "keyboard-key",
       onClick: () => {
-        console.log("t");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "t" }));
       },
     },
@@ -57,7 +63,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "y",
       className: "keyboard-key",
       onClick: () => {
-        console.log("y");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "y" }));
       },
     },
@@ -66,7 +71,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "u",
       className: "keyboard-key",
       onClick: () => {
-        console.log("u");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "u" }));
       },
     },
@@ -75,7 +79,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "i",
       className: "keyboard-key",
       onClick: () => {
-        console.log("i");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "i" }));
       },
     },
@@ -84,7 +87,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "o",
       className: "keyboard-key",
       onClick: () => {
-        console.log("o");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "o" }));
       },
     },
@@ -93,7 +95,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "p",
       className: "keyboard-key",
       onClick: () => {
-        console.log("p");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "p" }));
       },
     },
@@ -105,7 +106,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "a",
       className: "keyboard-key",
       onClick: () => {
-        console.log("a");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "a" }));
       },
     },
@@ -114,7 +114,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "s",
       className: "keyboard-key",
       onClick: () => {
-        console.log("s");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "s" }));
       },
     },
@@ -123,7 +122,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "d",
       className: "keyboard-key",
       onClick: () => {
-        console.log("d");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "d" }));
       },
     },
@@ -132,7 +130,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "f",
       className: "keyboard-key",
       onClick: () => {
-        console.log("f");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "f" }));
       },
     },
@@ -141,7 +138,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "g",
       className: "keyboard-key",
       onClick: () => {
-        console.log("g");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "g" }));
       },
     },
@@ -150,7 +146,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "h",
       className: "keyboard-key",
       onClick: () => {
-        console.log("h");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "h" }));
       },
     },
@@ -159,7 +154,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "j",
       className: "keyboard-key",
       onClick: () => {
-        console.log("j");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "j" }));
       },
     },
@@ -168,7 +162,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "k",
       className: "keyboard-key",
       onClick: () => {
-        console.log("k");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "k" }));
       },
     },
@@ -177,7 +170,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "l",
       className: "keyboard-key",
       onClick: () => {
-        console.log("l");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "l" }));
       },
     },
@@ -189,7 +181,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "←",
       className: "keyboard-key",
       onClick: () => {
-        console.log("Backspace");
         window.dispatchEvent(
           new KeyboardEvent("keydown", { key: "Backspace" })
         );
@@ -200,7 +191,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "z",
       className: "keyboard-key",
       onClick: () => {
-        console.log("z");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "z" }));
       },
     },
@@ -209,7 +199,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "x",
       className: "keyboard-key",
       onClick: () => {
-        console.log("x");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "x" }));
       },
     },
@@ -218,7 +207,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "c",
       className: "keyboard-key",
       onClick: () => {
-        console.log("c");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "c" }));
       },
     },
@@ -227,7 +215,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "v",
       className: "keyboard-key",
       onClick: () => {
-        console.log("v");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "v" }));
       },
     },
@@ -236,7 +223,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "b",
       className: "keyboard-key",
       onClick: () => {
-        console.log("b");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "b" }));
       },
     },
@@ -245,7 +231,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "n",
       className: "keyboard-key",
       onClick: () => {
-        console.log("n");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "n" }));
       },
     },
@@ -254,7 +239,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "m",
       className: "keyboard-key",
       onClick: () => {
-        console.log("m");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "m" }));
       },
     },
@@ -263,7 +247,6 @@ const VisualKeyboard = ({ characters }: Props) => {
       value: "↳",
       className: "keyboard-key",
       onClick: () => {
-        console.log("Enter");
         window.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
       },
     },
@@ -278,7 +261,7 @@ const VisualKeyboard = ({ characters }: Props) => {
             value={key.value}
             className={key.className}
             onClick={key.onClick}
-            state={characters[key.value as CharactersIndex]}
+            state={characters[key.value as CharacterType]}
           />
         ))}
       </div>
@@ -289,7 +272,7 @@ const VisualKeyboard = ({ characters }: Props) => {
             value={key.value}
             className={key.className}
             onClick={key.onClick}
-            state={characters[key.value as CharactersIndex]}
+            state={characters[key.value as CharacterType]}
           />
         ))}
       </div>
@@ -300,7 +283,7 @@ const VisualKeyboard = ({ characters }: Props) => {
             value={key.value}
             className={key.className}
             onClick={key.onClick}
-            state={characters[key.value as CharactersIndex]}
+            state={characters[key.value as CharacterType]}
           />
         ))}
       </div>
