@@ -25,7 +25,7 @@ const useStore = create<GameStateStore>((set) => ({
   winner: "",
   room: "",
   players: [],
-  socket: socket,
+  socket: socket
 }));
 
 export default useStore;

@@ -1,49 +1,31 @@
-import React, { useState } from "react";
-import useController from "../../../customHooks/useController";
 import styles from "./InputGrid.module.css";
+import InputSquare from "@/ui/InputSquare";
+import { CharacterStateType } from "@/models/Character.model";
+import useGuesses from "./hooks/useGuesses";
+import useResults from "./hooks/useResults";
 
-type Props = {
-  handleGuess: (word: string) => boolean;
-  results: string[][] | undefined;
-};
-
-const InputGrid = ({ handleGuess, results }: Props) => {
-  const [currentGuess, setCurrentGuess] = useState<number>(0);
-  const [guesses, setGuesses] = useState<string[]>([""].fill("", 0, 6));
-
-  const makeGuess = (guess: string): Boolean => {
-    if (handleGuess(guess)) {
-      let tempGuesses: string[] = [...guesses];
-      tempGuesses[currentGuess] = guess;
-      setGuesses(tempGuesses);
-      setCurrentGuess(currentGuess + 1);
-      return true;
-    }
-    return false;
-  };
-  const { guess } = useController(makeGuess);
+const InputGrid = () => {
+  const displayGuesses = useGuesses();
+  const results = useResults();
 
   const grid = new Array(6).fill(new Array(5).fill(""));
-
-  let displayGuesses = guesses;
-  displayGuesses[currentGuess] = guess;
 
   return (
     <div className={styles.gridContainer}>
       {grid.map((row, rowIndex) => (
         <div className={styles.answerRow} key={rowIndex}>
-          {new Array(5).fill(" ").map((col: number, colIndex: number) => (
-            <div
+          {row.map((col: number, colIndex: number) => (
+            <InputSquare
               key={colIndex}
-              className={
-                styles.square +
-                (results !== undefined && results[rowIndex]
-                  ? " " + styles[results[rowIndex][colIndex] || "d"]
-                  : "")
+              character={
+                displayGuesses[rowIndex]?.charAt(colIndex).toUpperCase() || ""
               }
-            >
-              {displayGuesses[rowIndex]?.charAt(colIndex).toUpperCase() || ""}
-            </div>
+              state={
+                results !== undefined && results[rowIndex]
+                  ? (results[rowIndex][colIndex] as CharacterStateType)
+                  : undefined
+              }
+            />
           ))}
         </div>
       ))}

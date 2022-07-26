@@ -21,6 +21,7 @@
       "@/ui/*": ["components/ui/*"],
       "@/views/*": ["components/views/*"],
       "@/utils/*": ["utils/*"],
+      "@/hooks/*": ["customHooks/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -6,6 +6,7 @@ import GameOverScreen from "../components/views/GameOverScreen";
 import PlayingScreen from "../components/views/PlayingScreen";
 import WinnerScreen from "../components/views/WinnerScreen";
 import useGameStore from "../store/gameStore";
+import { useEffect } from "react";
 
 const Home = (): JSX.Element => {
   const { currentScreen, socket } = useGameStore((state) => ({
