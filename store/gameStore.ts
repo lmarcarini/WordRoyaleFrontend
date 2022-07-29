@@ -16,7 +16,9 @@ interface GameStateStore {
   winner: string;
   room: string;
   players: Player[];
+  guesses: string[];
   socket: Socket;
+  reset: () => void;
 }
 
 const useStore = create<GameStateStore>((set) => ({
@@ -25,7 +27,18 @@ const useStore = create<GameStateStore>((set) => ({
   winner: "",
   room: "",
   players: [],
-  socket: socket
+  guesses: [""].fill("", 0, 6),
+  socket: socket,
+  reset: () =>
+    set((state) => ({
+      ...state,
+      currentScreen: "joining",
+      answer: "",
+      winner: "",
+      room: "",
+      players: [],
+      guesses: [""].fill("", 0, 6),
+    })),
 }));
 
 export default useStore;

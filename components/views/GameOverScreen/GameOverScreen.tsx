@@ -1,5 +1,6 @@
 import styles from "./GameOverScreen.module.css";
 import useGameStore from "@/store/gameStore";
+import InputGrid from "@/ui/InputGrid";
 
 type Props = {
   handleRestart: React.MouseEventHandler<HTMLButtonElement>;
@@ -10,6 +11,7 @@ const GameOverScreen = ({ handleRestart }: Props): JSX.Element => {
 
   return (
     <>
+      <InputGrid disabled={true} />
       <h1>Game Over</h1>
       <p>The word was {answer}!</p>
       <button

@@ -1,16 +1,16 @@
-.miniContainer{
-  height: 142px;
+.miniContainer {
+  height: 125px;
   background-color: #000000;
   border-radius: 5%;
 }
 
 .square {
   width: 10px;
-  height: 10px;
+  height: 8px;
   border: 1px solid aliceblue;
   border-radius: 20%;
   display: inline-block;
-  margin: 5px;
+  margin: 3px 5px;
 }
 
 .O {
@@ -26,71 +26,92 @@
 }
 
 @keyframes moveSquare {
-  0%   {
-    transform: translate(var(--anipos1), 0px);}
-  17%   {
+  0% {
+    transform: translate(var(--anipos1), 0px);
+  }
+  17% {
     opacity: 1;
-    transform: translate(var(--anipos1), 0px);}
-  18%   {
+    transform: translate(var(--anipos1), 0px);
+  }
+  18% {
     opacity: 0;
-    transform: translate(var(--anipos1), 0px);}
-  19%   {
+    transform: translate(var(--anipos1), 0px);
+  }
+  19% {
     opacity: 0;
-    transform: translate(var(--anipos2), 0px);}
-  20%   {
+    transform: translate(var(--anipos2), 0px);
+  }
+  20% {
     opacity: 1;
-    transform: translate(var(--anipos2), 0px);}
-  37%  {
+    transform: translate(var(--anipos2), 0px);
+  }
+  37% {
     opacity: 1;
-    transform: translate(var(--anipos2), 0px);}
-  38%  {
+    transform: translate(var(--anipos2), 0px);
+  }
+  38% {
     opacity: 0;
-    transform: translate(var(--anipos2), 0px);}
-  39%  {
+    transform: translate(var(--anipos2), 0px);
+  }
+  39% {
     opacity: 0;
-    transform: translate(var(--anipos3), 0px);}
-  40%  {
+    transform: translate(var(--anipos3), 0px);
+  }
+  40% {
     opacity: 1;
-    transform: translate(var(--anipos3), 0px);}
-  57%  {
+    transform: translate(var(--anipos3), 0px);
+  }
+  57% {
     opacity: 1;
-    transform: translate(var(--anipos3), 0px);}
-  58%  {
+    transform: translate(var(--anipos3), 0px);
+  }
+  58% {
     opacity: 0;
-    transform: translate(var(--anipos3), 0px);}
-  59%  {
+    transform: translate(var(--anipos3), 0px);
+  }
+  59% {
     opacity: 0;
-    transform: translate(var(--anipos4), 0px);}
-  60%  {
+    transform: translate(var(--anipos4), 0px);
+  }
+  60% {
     opacity: 1;
-    transform: translate(var(--anipos4), 0px);}
-  77%  {
+    transform: translate(var(--anipos4), 0px);
+  }
+  77% {
     opacity: 1;
-    transform: translate(var(--anipos4), 0px);}
-  78%  {
+    transform: translate(var(--anipos4), 0px);
+  }
+  78% {
     opacity: 0;
-    transform: translate(var(--anipos4), 0px);}
-  79%  {
+    transform: translate(var(--anipos4), 0px);
+  }
+  79% {
     opacity: 0;
-    transform: translate(var(--anipos5), 0px);}
-  80%  {
+    transform: translate(var(--anipos5), 0px);
+  }
+  80% {
     opacity: 1;
-    transform: translate(var(--anipos5), 0px);}
+    transform: translate(var(--anipos5), 0px);
+  }
   97% {
     opacity: 1;
-    transform: translate(var(--anipos5), 0px);}
+    transform: translate(var(--anipos5), 0px);
+  }
   98% {
     opacity: 0;
-    transform: translate(var(--anipos5), 0px);}
+    transform: translate(var(--anipos5), 0px);
+  }
   99% {
     opacity: 0;
-    transform: translate(var(--anipos1), 0px);}
+    transform: translate(var(--anipos1), 0px);
+  }
   100% {
     opacity: 1;
-    transform: translate(var(--anipos1), 0px);}
+    transform: translate(var(--anipos1), 0px);
+  }
 }
 
-.typing{
+.typing {
   color: #000000;
   animation-name: moveSquare;
   animation-duration: 2s;

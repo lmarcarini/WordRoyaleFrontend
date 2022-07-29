@@ -1,9 +1,6 @@
 import create from "zustand";
-import {
-  CharacterType,
-  CharacterStateType,
-  CharactersType,
-} from "@/models/Character.model";
+import { CharacterType, CharacterStateType } from "@/models/Character.model";
+import { CharactersType } from "@/models/CharactersType.model";
 
 const initialCharacters: CharactersType = {
   a: "?",
@@ -40,6 +37,7 @@ interface CharacterStore {
     character: CharacterType,
     newState: CharacterStateType
   ) => void;
+  resetCharacters: () => void;
 }
 
 const useStore = create<CharacterStore>((set) => ({
@@ -49,6 +47,8 @@ const useStore = create<CharacterStore>((set) => ({
       ...state,
       characters: { ...state.characters, [character]: newState },
     })),
+  resetCharacters: () =>
+    set((state) => ({ ...state, characters: { ...initialCharacters } })),
 }));
 
 export default useStore;

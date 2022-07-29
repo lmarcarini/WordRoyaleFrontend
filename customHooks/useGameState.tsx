@@ -1,11 +1,16 @@
 import { useEffect } from "react";
 import useStore from "../store/gameStore";
+import useCharacterStore from "@/store/charactersStore";
 import { Player } from "@/models/Player.model";
 
 const useGameState = () => {
+  const socket = useStore((state) => state.socket);
+
   const players = useStore((state) => state.players);
   const currentScreen = useStore((state) => state.currentScreen);
-  const socket = useStore((state) => state.socket);
+
+  const reset = useStore((state) => state.reset);
+  const resetCharacters = useCharacterStore((state) => state.resetCharacters);
 
   useEffect(() => {
     const onJoin = (room: string, answer: string) => {
@@ -32,8 +37,8 @@ const useGameState = () => {
 
     const getGuess = (playerId: string, guess: string[]) => {
       const player = players.findIndex((p) => p.id === playerId);
-      console.log("guess", guess);
-      if (player !== -1) {
+      const playerExists = player !== -1;
+      if (playerExists) {
         let newPlayers = players;
         newPlayers[player].guesses = [...newPlayers[player].guesses, guess];
         if (
@@ -41,9 +46,9 @@ const useGameState = () => {
           newPlayers[player].status === "playing"
         ) {
           newPlayers[player].status = "gameover";
-          if (socket.id === playerId) {
+          /*if (socket.id === playerId) {
             useStore.setState({ currentScreen: "gameover" });
-          }
+          }*/
         }
         useStore.setState({ players: [...newPlayers] });
       }
@@ -78,12 +83,8 @@ const useGameState = () => {
 
     const onDisconnect = () => {
       console.log("Disconnected");
-      useStore.setState({
-        currentScreen: "joining",
-        room: "",
-        players: [],
-        answer: "",
-      });
+      resetCharacters();
+      reset();
     };
 
     socket.on("join", onJoin);
@@ -102,7 +103,7 @@ const useGameState = () => {
       socket.off("winner", onWinner);
       socket.off("disconnect", onDisconnect);
     };
-  }, [currentScreen, players, socket]);
+  }, [currentScreen, players, socket, reset, resetCharacters]);
 };
 
 export default useGameState;

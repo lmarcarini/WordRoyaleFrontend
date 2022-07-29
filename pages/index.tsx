@@ -6,12 +6,12 @@ import GameOverScreen from "../components/views/GameOverScreen";
 import PlayingScreen from "../components/views/PlayingScreen";
 import WinnerScreen from "../components/views/WinnerScreen";
 import useGameStore from "../store/gameStore";
-import { useEffect } from "react";
 
 const Home = (): JSX.Element => {
-  const { currentScreen, socket } = useGameStore((state) => ({
+  const { currentScreen, socket, reset } = useGameStore((state) => ({
     currentScreen: state.currentScreen,
     socket: state.socket,
+    reset: state.reset,
   }));
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,8 +26,8 @@ const Home = (): JSX.Element => {
 
   //handle refresh client
   const handleRestart = () => {
-    socket.emit("restart");
-    useGameStore.setState({ currentScreen: "joining" });
+    //socket.emit("restart");
+    reset();
   };
 
   return (

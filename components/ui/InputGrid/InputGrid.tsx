@@ -4,8 +4,12 @@ import { CharacterStateType } from "@/models/Character.model";
 import useGuesses from "./hooks/useGuesses";
 import useResults from "./hooks/useResults";
 
-const InputGrid = () => {
-  const displayGuesses = useGuesses();
+type Props = {
+  disabled: boolean;
+};
+
+const InputGrid = ({ disabled = false }: Props) => {
+  const displayGuesses = useGuesses(disabled);
   const results = useResults();
 
   const grid = new Array(6).fill(new Array(5).fill(""));

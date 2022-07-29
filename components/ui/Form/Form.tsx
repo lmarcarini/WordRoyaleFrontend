@@ -6,15 +6,15 @@ type FormProps = {
   submitHandler: React.FormEventHandler<HTMLFormElement>;
 };
 
-export default function Form({ submitHandler }: FormProps) {
+export default function Form({ submitHandler }: FormProps): JSX.Element {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleEnter = (playerName: string): Boolean => {
+  const handleEnter = (playerName: string) => {
     if (playerName.length > 0) {
       //enable input
       inputRef.current!.disabled = false;
-      buttonRef.current?.click();
+      buttonRef.current!.click();
       inputRef.current!.disabled = true;
       return true;
     }

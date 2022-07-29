@@ -1,10 +1,14 @@
-.keyboard-row{
-    display: flex;
-    flex-direction: row;
-    width: 95vw;
-    max-width: 500px;
+.keyboard-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 500px;
+  gap: 2px;
+  margin-bottom: 3px;
+  justify-items: center;
+  align-items: center;
 }
 
-.keyboardRow2{
-    margin-left: 0.75rem;
+.keyboard-row--middle {
+  margin-left: 0.75rem;
 }

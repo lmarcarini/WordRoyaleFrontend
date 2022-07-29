@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 const useController = (
-  makeGuess: (guess: string) => Boolean,
-  state?: String
+  makeGuess: (guess: string) => boolean,
+  state?: string
 ) => {
   const [guess, setGuess] = useState("");
 

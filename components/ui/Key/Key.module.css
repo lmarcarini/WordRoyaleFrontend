@@ -1,23 +1,22 @@
-.keyboard-key{
-    width: 3rem;
-    height: 3rem;
-    background-color: gray;
-    border-radius: 10%;
-    margin: 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
+.keyboard-key {
+  width: clamp(1.5rem, 8vw, 3rem);
+  height: 3rem;
+  background-color: gray;
+  border-radius: 10%;
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.O{
-    background-color: #00b63d;
+.keyboard-key--state--O {
+  background-color: #00b63d;
 }
 
-.X{
-    background-color: #b6a400;
+.keyboard-key--state--X {
+  background-color: #b6a400;
 }
 
-.N{
-    background-color: black;
+.keyboard-key--state--N {
+  background-color: black;
 }

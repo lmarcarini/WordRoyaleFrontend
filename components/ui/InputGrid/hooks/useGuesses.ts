@@ -6,16 +6,16 @@ import useCharacterStore from "@/store/charactersStore";
 import useGameStore from "@/store/gameStore";
 import { useState } from "react";
 
-const useGuesses = () => {
+const useGuesses = (disabled = false) => {
   const [currentGuess, setCurrentGuess] = useState<number>(0);
-  const [guesses, setGuesses] = useState<string[]>([""].fill("", 0, 6));
+  const guesses = useGameStore((state) => state.guesses);
   const characters = useCharacterStore((state) => state.characters);
   const socket = useGameStore((state) => state.socket);
   const room = useGameStore((state) => state.room);
-  const players = useGameStore((state) => state.players);
   const answer = useGameStore((state) => state.answer);
 
   const makeGuess = (word: string): boolean => {
+    if (disabled) return false;
     if (isWordAllowed(word)) {
       let guessResult = getGuessResult(word, answer);
       let updatedCharacters = updateCharacters(
@@ -29,7 +29,7 @@ const useGuesses = () => {
       socket.emit("guess", guessResult, room);
       let tempGuesses: string[] = [...guesses];
       tempGuesses[currentGuess] = guess;
-      setGuesses(tempGuesses);
+      useGameStore.setState({ guesses: [...tempGuesses] });
       setCurrentGuess(currentGuess + 1);
       return true;
     }
@@ -39,7 +39,7 @@ const useGuesses = () => {
   const { guess } = useController(makeGuess);
 
   let displayGuesses = guesses;
-  displayGuesses[currentGuess] = guess;
+  if (!disabled) displayGuesses[currentGuess] = guess;
 
   return displayGuesses;
 };

@@ -1,8 +1,5 @@
-import {
-  CharactersType,
-  CharacterType,
-  CharacterStateType,
-} from "@/models/Character.model";
+import { CharacterType, CharacterStateType } from "@/models/Character.model";
+import { CharactersType } from "@/models/CharactersType.model";
 
 const updateCharacters = (
   characters: CharactersType,

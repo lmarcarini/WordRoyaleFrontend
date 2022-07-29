@@ -7,9 +7,14 @@ type Props = {
   state: string;
 };
 
-const Key = ({ className, value, state, onClick }: Props) => {
+const Key = ({ value, state, onClick }: Props) => {
   return (
-    <div className={styles[className] + " " + styles[state]} onClick={onClick}>
+    <div
+      className={
+        styles["keyboard-key"] + " " + styles["keyboard-key--state--" + state]
+      }
+      onClick={onClick}
+    >
       {value}
     </div>
   );
