@@ -3,7 +3,6 @@ import styles from "./Key.module.css";
 type Props = {
   onClick: () => void;
   value: string;
-  className: string;
   state: string;
 };
 
