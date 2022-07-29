@@ -1,13 +1,14 @@
 import Form from "../../ui/Form";
 import VisualKeyboard from "../../ui/VisualKeyboard";
 import styles from "./EnterScreen.module.css";
+import { CharactersType } from "@/models/CharactersType.model";
 
 type Props = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 const EnterScreen = ({ handleSubmit }: Props) => {
-  const characters: Characters = {
+  const characters: CharactersType = {
     a: "?",
     b: "?",
     c: "?",

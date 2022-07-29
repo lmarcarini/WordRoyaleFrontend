@@ -5,7 +5,7 @@ import useGuesses from "./hooks/useGuesses";
 import useResults from "./hooks/useResults";
 
 type Props = {
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 const InputGrid = ({ disabled = false }: Props) => {
