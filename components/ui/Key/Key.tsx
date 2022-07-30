@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Key.module.css";
 
 type Props = {
@@ -19,4 +20,4 @@ const Key = ({ value, state, onClick }: Props) => {
   );
 };
 
-export default Key;
+export default React.memo(Key);

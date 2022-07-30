@@ -1,4 +1,5 @@
 import { CharacterStateType } from "@/models/Character.model";
+import React from "react";
 import styles from "./InputSquare.module.css";
 
 type Props = {
@@ -20,7 +21,6 @@ const InputSquare = ({
   if (state) classes.push(styles[`square--${state}`]);
   if (wrong && isGuess) classes.push(styles[`square--wrong`]);
 
-  console.log("wrong", wrong);
   const handleAnimationEnd = () => {
     resetWrong();
   };
@@ -32,4 +32,4 @@ const InputSquare = ({
   );
 };
 
-export default InputSquare;
+export default React.memo(InputSquare);
