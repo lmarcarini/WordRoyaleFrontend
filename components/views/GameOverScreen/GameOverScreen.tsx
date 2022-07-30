@@ -1,9 +1,10 @@
 import styles from "./GameOverScreen.module.css";
 import useGameStore from "@/store/gameStore";
 import InputGrid from "@/ui/InputGrid";
+import PlayAgainButton from "@/ui/PlayAgainButton";
 
 type Props = {
-  handleRestart: React.MouseEventHandler<HTMLButtonElement>;
+  handleRestart: () => void;
 };
 
 const GameOverScreen = ({ handleRestart }: Props): JSX.Element => {
@@ -22,13 +23,7 @@ const GameOverScreen = ({ handleRestart }: Props): JSX.Element => {
           !
         </p>
       </div>
-      <button
-        type="button"
-        onClick={handleRestart}
-        className={styles.replayButton}
-      >
-        Play Again
-      </button>
+      <PlayAgainButton onClick={handleRestart} />
     </>
   );
 };

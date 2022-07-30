@@ -26,7 +26,6 @@ const Home = (): JSX.Element => {
 
   //handle refresh client
   const handleRestart = () => {
-    //socket.emit("restart");
     reset();
   };
 
