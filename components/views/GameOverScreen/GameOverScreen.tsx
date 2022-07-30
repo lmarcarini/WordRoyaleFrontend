@@ -12,8 +12,16 @@ const GameOverScreen = ({ handleRestart }: Props): JSX.Element => {
   return (
     <>
       <InputGrid disabled={true} />
-      <h1>Game Over</h1>
-      <p>The word was {answer}!</p>
+      <div>
+        <h1>Game Over</h1>
+        <p>
+          The word was{" "}
+          <b>
+            <i>{answer}</i>
+          </b>
+          !
+        </p>
+      </div>
       <button
         type="button"
         onClick={handleRestart}
