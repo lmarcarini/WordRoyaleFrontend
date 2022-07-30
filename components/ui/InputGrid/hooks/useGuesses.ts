@@ -34,7 +34,6 @@ const useGuesses = (disabled = false) => {
       setCurrentGuess(currentGuess + 1);
       return true;
     }
-    console.log("guess not allowed");
     setHasGuessedWrong(true);
     return false;
   };

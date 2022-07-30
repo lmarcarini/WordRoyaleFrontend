@@ -5,8 +5,6 @@ type MiniAnswerProps = {
 };
 
 export default function MiniAnswer({ guesses }: MiniAnswerProps) {
-  console.log("guesses", guesses);
-
   return (
     <div className={styles.miniContainer}>
       {guesses.map((guess, index) => (
