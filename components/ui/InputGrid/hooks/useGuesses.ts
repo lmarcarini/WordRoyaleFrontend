@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const useGuesses = (disabled = false) => {
   const [currentGuess, setCurrentGuess] = useState<number>(0);
+  const [hasGuessedWrong, setHasGuessedWrong] = useState<boolean>(false);
   const guesses = useGameStore((state) => state.guesses);
   const characters = useCharacterStore((state) => state.characters);
   const socket = useGameStore((state) => state.socket);
@@ -33,6 +34,8 @@ const useGuesses = (disabled = false) => {
       setCurrentGuess(currentGuess + 1);
       return true;
     }
+    console.log("guess not allowed");
+    setHasGuessedWrong(true);
     return false;
   };
 
@@ -41,7 +44,12 @@ const useGuesses = (disabled = false) => {
   let displayGuesses = guesses;
   if (!disabled) displayGuesses[currentGuess] = guess;
 
-  return displayGuesses;
+  return {
+    displayGuesses,
+    hasGuessedWrong,
+    resetGuessWrong: () => setHasGuessedWrong(false),
+    guessLine: currentGuess,
+  };
 };
 
 export default useGuesses;

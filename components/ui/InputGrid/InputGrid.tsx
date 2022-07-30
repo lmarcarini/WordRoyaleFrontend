@@ -9,7 +9,8 @@ type Props = {
 };
 
 const InputGrid = ({ disabled = false }: Props) => {
-  const displayGuesses = useGuesses(disabled);
+  const { displayGuesses, hasGuessedWrong, resetGuessWrong, guessLine } =
+    useGuesses(disabled);
   const results = useResults();
 
   const grid = new Array(6).fill(new Array(5).fill(""));
@@ -29,6 +30,9 @@ const InputGrid = ({ disabled = false }: Props) => {
                   ? (results[rowIndex][colIndex] as CharacterStateType)
                   : undefined
               }
+              wrong={hasGuessedWrong}
+              resetWrong={resetGuessWrong}
+              isGuess={guessLine === rowIndex}
             />
           ))}
         </div>

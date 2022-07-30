@@ -4,13 +4,32 @@ import styles from "./InputSquare.module.css";
 type Props = {
   character: string;
   state: CharacterStateType | undefined;
+  wrong: boolean;
+  resetWrong: () => void;
+  isGuess: boolean;
 };
 
-const InputSquare = ({ character, state }: Props): JSX.Element => {
+const InputSquare = ({
+  character,
+  state,
+  wrong,
+  resetWrong,
+  isGuess,
+}: Props): JSX.Element => {
   const classes = [styles["square"]];
   if (state) classes.push(styles[`square--${state}`]);
+  if (wrong && isGuess) classes.push(styles[`square--wrong`]);
 
-  return <div className={classes.join(" ")}>{character}</div>;
+  console.log("wrong", wrong);
+  const handleAnimationEnd = () => {
+    resetWrong();
+  };
+
+  return (
+    <div className={classes.join(" ")} onAnimationEnd={handleAnimationEnd}>
+      {character}
+    </div>
+  );
 };
 
 export default InputSquare;
