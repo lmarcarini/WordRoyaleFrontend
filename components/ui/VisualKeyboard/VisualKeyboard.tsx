@@ -1,4 +1,4 @@
-import Key from "../Key";
+import Key from "./components/Key";
 import styles from "./VisualKeyboard.module.css";
 import { CharacterType } from "@/models/Character.model";
 import { CharactersType } from "@/models/CharactersType.model";

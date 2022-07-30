@@ -1,5 +1,5 @@
 import styles from "./InputGrid.module.css";
-import InputSquare from "@/ui/InputSquare";
+import InputSquare from "./components/InputSquare";
 import { CharacterStateType } from "@/models/Character.model";
 import useGuesses from "./hooks/useGuesses";
 import useResults from "./hooks/useResults";
