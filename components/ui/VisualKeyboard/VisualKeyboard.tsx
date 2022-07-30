@@ -16,13 +16,13 @@ const createKeyObject = (key: string, display?: string | undefined) => {
   };
 };
 
-const firstRow = "qwertyuiop".split("").map((key) => createKeyObject(key));
+const firstRow = "QWERTYUIOP".split("").map((key) => createKeyObject(key));
 
-const secondRow = "asdfghjkl".split("").map((key) => createKeyObject(key));
+const secondRow = "ASDFGHJKL".split("").map((key) => createKeyObject(key));
 
 const thirdRow = [
   createKeyObject("Backspace", "←"),
-  ..."zxcvbnm".split("").map((key) => createKeyObject(key)),
+  ..."ZXCVBNM".split("").map((key) => createKeyObject(key)),
   createKeyObject("Enter", "↳"),
 ];
 
