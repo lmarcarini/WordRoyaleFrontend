@@ -8,11 +8,13 @@ const WaitingScreen = (): JSX.Element => {
     <>
       <h1>Waiting for other players</h1>
       <div className={styles.dotPulse}></div>
-      {players.map((player) => (
-        <p key={player.id}>
-          Player <b>{player.name}</b> joined.
-        </p>
-      ))}
+      <div>
+        {players.map((player) => (
+          <p key={player.id}>
+            Player <b>{player.name}</b> joined.
+          </p>
+        ))}
+      </div>
     </>
   );
 };
