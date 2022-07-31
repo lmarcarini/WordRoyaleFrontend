@@ -46,9 +46,9 @@ const useGameState = () => {
           newPlayers[player].status === "playing"
         ) {
           newPlayers[player].status = "gameover";
-          /*if (socket.id === playerId) {
+          if (socket.id === playerId) {
             useStore.setState({ currentScreen: "gameover" });
-          }*/
+          }
         }
         useStore.setState({ players: [...newPlayers] });
       }
