@@ -13,6 +13,7 @@ const useController = (
   useEffect(() => {
     //handle key down
     const handleKeyDown = (e: KeyboardEvent) => {
+      window.navigator.vibrate(200);
       let MAX_CHARACTERS = 5;
       if (state === "joining") {
         MAX_CHARACTERS = 10;
