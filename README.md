@@ -1,5 +1,5 @@
-This is another Wordle Clone but with a twist, it's now a online battle royale.
+This is another Wordle Clone but with a twist, it's now multiplayer up to three players.
 
-Keep in mind this is an initial version and is subject to changes and bug fixes.
+Try a match in https://word-royale-frontend.herokuapp.com/
 
-It's currently being develop in Next.js and Express.js/socket.io.
+It was develop in Next.js, Typescript and Express.js/socket.io.
