@@ -35,7 +35,7 @@ const VisualKeyboard = ({ characters }: Props) => {
             key={key.key}
             value={key.value}
             onClick={key.onClick}
-            state={characters[key.value as CharacterType]}
+            state={characters[key.value.toLowerCase() as CharacterType]}
           />
         ))}
       </div>
@@ -49,7 +49,7 @@ const VisualKeyboard = ({ characters }: Props) => {
             key={key.key}
             value={key.value}
             onClick={key.onClick}
-            state={characters[key.value as CharacterType]}
+            state={characters[key.value.toLowerCase() as CharacterType]}
           />
         ))}
       </div>
@@ -59,7 +59,7 @@ const VisualKeyboard = ({ characters }: Props) => {
             key={key.key}
             value={key.value}
             onClick={key.onClick}
-            state={characters[key.value as CharacterType]}
+            state={characters[key.value.toLowerCase() as CharacterType]}
           />
         ))}
       </div>

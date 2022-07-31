@@ -8,6 +8,8 @@ const updateCharacters = (
 ) => {
   let newCharacters = { ...characters };
   for (let i = 0; i < guessResult.length; i++) {
+    console.log("updating characters");
+    console.log(guessResult);
     let currentChar = word[i];
     switch (guessResult[i]) {
       case "O":

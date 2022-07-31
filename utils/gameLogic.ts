@@ -5,7 +5,7 @@ export const isWordAllowed = (word: string): boolean => {
   const isWordValid = (word: string): boolean => word.length === 5;
 
   const checkIfWordExists = (word: string): boolean =>
-    allowedGuesses.includes(word);
+    allowedGuesses.includes(word.toLowerCase());
 
   return isWordValid(word) && checkIfWordExists(word);
 };
@@ -14,6 +14,8 @@ export const getGuessResult = (
   word: string,
   answer: string
 ): CharacterStateType[] => {
+  word = word.toLowerCase();
+  answer = answer.toLowerCase();
   let result: CharacterStateType[] = [];
   for (let i = 0; i < word.length; i++) {
     if (word[i] === answer[i]) {

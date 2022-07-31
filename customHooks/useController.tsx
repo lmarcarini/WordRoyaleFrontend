@@ -28,7 +28,7 @@ const useController = (
       if (e.key === "Backspace" && guess.length > 0)
         setGuess((curGuess) => curGuess.slice(0, -1));
       if (new RegExp(/^[a-z]$/i).test(e.key) && guess.length < MAX_CHARACTERS)
-        setGuess((curGuess) => curGuess + e.key);
+        setGuess((curGuess) => curGuess + e.key.toLowerCase());
     };
 
     window.addEventListener("keydown", handleKeyDown);
